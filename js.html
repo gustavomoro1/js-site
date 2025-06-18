@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sobre Mim</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #eef1f5;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      color: #4a90e2;
+      text-align: center;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+
+    /* FOTO REDONDA */
+    .foto-perfil {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    video {
+      max-width: 100%;
+      border-radius: 12px;
+      display: block;
+      margin: 20px auto;
+    }
+
+    .social {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .social a {
+      margin: 0 10px;
+      padding: 10px 15px;
+      background-color: #4a90e2;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .social a:hover {
+      background-color: #3a7bd5;
+    }
+
+    /* Estilo para o parágrafo de data e hora */
+    #dataHora {
+      margin-top: 15px;
+      font-weight: 600;
+      color: #4a90e2;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    /* Botões estilos */
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background-color: #4a90e2;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #3a7bd5;
+    }
+
+    /* Centralizar os botões */
+    .btn-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    /* Estilo para a imagem que será alternada */
+    #imagemAlternada {
+      max-width: 300px;
+      border-radius: 12px;
+      margin: 20px auto;
+      display: block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Olá! 👋</h1>
+    <p><strong>Nome:</strong> Gustavo Moro Conke</p>
+    <p><strong>Idade:</strong> 17 anos</p>
+    <p><strong>Hobbies:</strong> Jogar videogame, correr, ouvir música e nadar</p>
+    <p id="sobre-mim"><strong>Sobre mim:</strong> Sou uma pessoa que busca equilíbrio entre os estudos e momentos de lazer. Gosto de correr para relaxar e sou apaixonado por tecnologia e desafios. Meu objetivo é passar em Ciência da Computação e aprender a programar.</p>
+
+    <!-- Botão para alterar estilo do parágrafo "Sobre mim" -->
+    <div class="btn-container">
+      <button onclick="alterarEstilo()">
+        Alterar estilo do Sobre Mim
+      </button>
+    </div>
+
+    <!-- Botão e parágrafo para mostrar data e hora atual -->
+    <div class="btn-container">
+      <button onclick="mostrarDataHora()">
+        Mostrar data e hora atual
+      </button>
+      <p id="dataHora"></p>
+    </div>
+
+    <h2>Minha Foto</h2>
+    <img src="foto.jpeg" alt="Minha imagem" class="foto-perfil">
+
+    <!-- Nova seção para alternar imagem -->
+    <h2>Imagem Alternável</h2>
+    <img id="imagemAlternada" src="imagem1.jpg" alt="Imagem alternada">
+    <div class="btn-container">
+      <button onclick="trocarImagem()">
+        Trocar Imagem
+      </button>
+    </div>
+
+
+    <h2>Minhas Redes Sociais</h2>
+    <div class="social">
+      <a href="https://www.instagram.com/gustavoconke/" target="_blank">Instagram</a>
+      <a href="https://www.youtube.com/@gustavomoro1858" target="_blank">YouTube</a>
+    </div>
+  </div>
+
+  <script>
+    function alterarEstilo() {
+      const p = document.getElementById('sobre-mim');
+      p.style.color = '#6E859F';
+      p.style.fontSize = '20px';
+      p.style.fontWeight = '600';
+      p.style.backgroundColor = '#f4f8fc';
+      p.style.padding = '15px';
+      p.style.borderRadius = '10px';
+      p.style.transition = 'all 0.3s ease';
+    }
+
+    function mostrarDataHora() {
+      const pDataHora = document.getElementById('dataHora');
+      const agora = new Date();
+
+      // Formatar a data e hora em formato legível
+      const dataFormatada = agora.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      });
+
+      const horaFormatada = agora.toLocaleTimeString('pt-BR', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+
+      pDataHora.textContent = `Data: ${dataFormatada} — Hora: ${horaFormatada}`;
+    }
+
+    // Função para alternar entre duas imagens
+    function trocarImagem() {
+      const img = document.getElementById('imagemAlternada');
+      // Defina os caminhos das duas imagens aqui
+      const imagem1 = 'foto.jpeg';
+      const imagem2 = 'imagem2.jpeg';
+
+      if (img.src.includes(imagem1)) {
+        img.src = imagem2;
+      } else {
+        img.src = imagem1;
+      }
+    }
+  </script>
+</body>
+</html>
